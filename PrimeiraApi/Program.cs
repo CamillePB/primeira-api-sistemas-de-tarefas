@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using PrimeiraApi.Data;
+using PrimeiraApi.Repositories.Interfaces;
+using PrimeiraApi.Repositories;
+
 namespace PrimeiraApi
 {
     public class Program
@@ -12,6 +17,14 @@ namespace PrimeiraApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                .AddDbContext<SistemaTarefasDBContext>(
+            options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+            );
+
+            builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             var app = builder.Build();
 
