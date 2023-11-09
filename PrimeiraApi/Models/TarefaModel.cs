@@ -1,4 +1,5 @@
-﻿using SistemaDeTarefas.Enums;
+﻿using PrimeiraApi.Models;
+using SistemaDeTarefas.Enums;
 
 namespace SistemaDeTarefas.Models
 {
@@ -10,6 +11,7 @@ namespace SistemaDeTarefas.Models
         public StatusTarefa Status { get; set; }
         public int? UsuarioId { get; set; }
 
-       // public virtual UsuarioModel? Usuario { get; set; }
+        //chave fk de usuario
+        public virtual UsuarioModel? Usuario { get; set; }
     }
 }
